@@ -1,11 +1,13 @@
 import Koa from 'koa'
+import jwt from 'koa-jwt'
 import bodyParser from 'koa-bodyparser'
 import cors from '@koa/cors'
 import helmet from 'koa-helmet'
 import { createConnection, Connection } from 'typeorm'
 import winston from 'winston'
 import { logger } from './logger'
-import { unprotectedRouter } from './routes/route'
+import { config } from './config'
+import * as route from './router'
 
 // db config in `ormconfig.json`
 createConnection()
@@ -22,7 +24,13 @@ createConnection()
 
     app.use(bodyParser())
 
-    app.use(unprotectedRouter.routes()).use(unprotectedRouter.allowedMethods())
+    route.unprotect().use(app)
+
+    // JWT middleware -> below this line routes are only reached if JWT token is valid, secret as env variable
+    // do not protect swagger-json and swagger-html endpoints
+    // app.use(jwt({ secret: config.jwtSecret }).unless({ path: [/^\/login/] }))
+
+    route.protect().use(app)
 
     app.listen(3300)
 

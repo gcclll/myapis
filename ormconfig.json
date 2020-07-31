@@ -5,17 +5,17 @@
   "synchronize": true,
   "logging": false,
   "entities": [
-    "src/entity/*.ts"
+    "src/modules/**/entity/*.ts"
   ],
   "subscribers": [
-    "src/subscriber/*.ts"
+    "src/modules/**/subscriber/*.ts"
   ],
   "migrations": [
-    "src/migration/*.ts"
+    "src/modules/**/migration/*.ts"
   ],
   "cli": {
-    "entitiesDir": "src/entity",
-    "migrationsDir": "src/migration",
-    "subscribersDir": "src/subscriber"
+    "entitiesDir": "src/modules/**/entity",
+    "migrationsDir": "src/modules/**/migration",
+    "subscribersDir": "src/modules/**/subscriber"
   }
 }

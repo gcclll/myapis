@@ -9,7 +9,7 @@ import {
   responsesAll,
   tagsAll
 } from 'koa-swagger-decorator'
-import { User, userSchema } from '../../entity/test/user'
+import { User, userSchema } from '../entity/user'
 
 @responsesAll({
   200: { description: 'success' },

@@ -1,0 +1,14 @@
+#
+# XML is supported - highlight, pretty-print
+#
+GET http://www.redmine.org/issues.xml?limit=10
+
+
+#
+# cms api
+#
+#
+# cms api
+#
+POST https://114.55.108.245:10080/cms/api/def/auth/getVerifyCode
+Content-Type: application/json

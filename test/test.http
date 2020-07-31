@@ -1,0 +1,32 @@
+#
+# test api, http://localhost:3300
+#
+#
+# test
+#
+GET http://localhost:3300
+
+#
+# login
+#
+POST http://localhost:3300/login
+Content-Type: application/json
+
+{
+  "username": "root",
+  "password": "root"
+}
+
+# generic vars
+:token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHBpcmUiOjE1OTYxODExOTg1MjgsIm5hbWUiOiJyb290In0
+:headers = <<
+Authorization: Bearer :token
+Content-Type: application/json
+#
+
+
+#
+# get users
+#
+GET http://localhost:3300/users
+:headers
